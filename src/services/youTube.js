@@ -1,8 +1,5 @@
 angular.module('video-player')
   .service('youTube', function($http) {
-  // TODO
-  // Get request
-
     this.search = function(query, callback) {
       $http.get('https://www.googleapis.com/youtube/v3/search', {
         params: {
@@ -18,7 +15,5 @@ angular.module('video-player')
           console.log('error', err);
         });
     };
-
   });
 
-// $http.get('/someUrl', config).then(successCallback, errorCallback);

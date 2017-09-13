@@ -1,35 +1,30 @@
 angular.module('video-player')
-  .controller('appCtrl', function(youTube) {
-    this.videos = window.exampleVideoData;
-    this.selectedVideo = this.videos[0];
 
+  .controller('appCtrl', function(youTube) {
     this.selectVideo = (video) => {
       console.log('video clicked', video);
       this.selectedVideo = video;
     };
 
-    this.updateVideos = function(response) {
+    this.result = (response) => {
       this.videos = response.data.items;
       this.selectedVideo = this.videos[0];
     };
 
-    this.searchyouTube = youTube.search('Surfboards', (response) => {
-      console.log('response', response);
-      this.updateVideos(response);
-    });
+    this.searchyouTube = (query = 'pizza') => {
+      youTube.search(query, (response) => {
+        this.result(response);
+      });
+    };
 
+    this.searchClick = (input) => {
+      this.searchyouTube(input);
+    };
 
-
-    // this.search('string', updateVideos)
-
-    // this.updateVideos = (data.items) => {this.videos = data.items};
-
-
-
+    this.searchyouTube();
   })
 
   .component('app', {
-
 
     bindings: {
       data: '<'
