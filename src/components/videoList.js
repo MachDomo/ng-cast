@@ -6,6 +6,9 @@ angular.module('video-player')
       videos: '<',
       onClick: '<'
     },
+    // controller: function($scope) {
+    //   console.log($scope);
+    // },
     templateUrl: 'src/templates/videoList.html',
   });
 
